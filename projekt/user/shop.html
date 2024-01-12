@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDTech - Bolt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <div class="d-flex align-items-center">
+                    <img src="logo.png" alt="MDTech logo" title="MDTech logo" style="max-width: 40px; height: auto;"
+                        id="navlogo">
+                    <span style="color: #e2e2e2; margin-left: 3px;">MD<span style="color:#fa3d3b">Tech</span></span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCenteredExample" aria-controls="navbarCenteredExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+                <ul class="navbar-nav mb-2 mb-lg-0 navbarmd">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">KEZDŐLAP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="shop.html">BOLT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="about.html">RÓLUNK</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="contact.html">KAPCSOLAT</a>
+                    </li>
+                </ul>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-center">
+                                <input id="keresesInput" class="form-control form-control-sm rounded-start" type="search" placeholder="Keresés" aria-label="Search">
+                                <button class="btn btn-outline-light rounded-end" type="button" onclick="search()"
+                                    style="padding: 3% 5% 5%; border: none; background: none;">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+                <div class="dropdown"  style="padding-top: 1%;">
+                    <span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </span>
+
+                    <div class="basket-container">
+                        <div class="basket">
+                            <ul id="basket-items">
+                            </ul>
+                            <p>Total: $<span id="total-price">0.00</span></p>
+                            <button class="btncart" onclick="clearBasket()">Kosár törlése</button>
+                            <button class="btncart" onclick="checkout()">Fizetés</button>
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div id="loginButtonContainer" style="margin-left: 20px; margin-top: 5px;">
+                    <button id="loginButton" class="btn btn-dark" onclick="logIn()">Bejelentkezés</button>
+                </div>
+                <div id="loggedInMenu" style="display: none; margin-left: 20px; margin-top: 5px;"
+                    class="dropdown align-items-center">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="user2.png" alt="Profil ikon"
+                            style="width: 20px; height: 20px; margin-right: 5px; margin-bottom: 4px;"> Profil
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Profil szerkesztése</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Rendeléseim</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="logOut()">Kijelentkezés</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container shop-section">
+        <br>
+        <h2 class="text-center"><span style="color: #e2e2e2;"><b>Forgalmazott termékeink</b></span></h2>
+        <br>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_delta_2.png" alt="Termék 1" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX DELTA 2</h5>
+                        <p class="card-text">Hűtés okos funkciókkal és energiatakarékos működéssel.</p>
+                        <p class="card-price">Ár: $499.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 499.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_sigma.png" alt="Termék 2" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX SIGMA SERIES</h5>
+                        <p class="card-text">Energiahatékony és erőteljes hűtés intelligens vezérléssel.</p>
+                        <p class="card-price">Ár: $699.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 699.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_omega_2.png" alt="Termék 3" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX OMEGA SERIES</h5>
+                        <p class="card-text">Elegáns és kiváló teljesítményű hordozható légkondicionáló.</p>
+                        <p class="card-price">Ár: $799.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 799.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_gamma_2.png" alt="Termék 4" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX GAMMA 2 SERIES</h5>
+                        <p class="card-text">Modern dizájn és hatékony hűtés egyben.</p>
+                        <p class="card-price">Ár: $599.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 599.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_kappa.png" alt="Termék 5" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX KAPPA SERIES</h5>
+                        <p class="card-text">Kompakt méret és csendes működés a kényelmes hűtésért.</p>
+                        <p class="card-price">Ár: $449.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 449.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/aux_magma.png" alt="Termék 6" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AUX MAGMA SERIES</h5>
+                        <p class="card-text">Inverter technológia és gyors hűtés egyesül ebben a modellben.</p>
+                        <p class="card-price">Ár: $899.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 899.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/fisher_nordic_93AE3.png" alt="Termék 7" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">FISHER NORDIC 93AE3</h5>
+                        <p class="card-text">Egyedi funkciók és esztétikus kialakítás.</p>
+                        <p class="card-price">Ár: $549.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 549.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/fisher_art_123AE3.png" alt="Termék 8" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">FISHER ART 123AE3</h5>
+                        <p class="card-text">Környezetbarát és hatékony hűtés egyszerre.</p>
+                        <p class="card-price">Ár: $749.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 749.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="images/fisher_art_93AE3.png" alt="Termék 9" class="card-img-top img-fluid">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">FISHER ART 93AE3</h5>
+                        <p class="card-text">WiFi kapcsolat és mobil alkalmazás vezérléshez.</p>
+                        <p class="card-price">Ár: $649.99</p>
+                        <a href="#" class="btn btncart btn-outline-primary mt-auto"
+                            onclick="addToBasket('Product Title', 649.99)">KOSÁRBA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="row mt-4 justify-content-center">
+            <div class="col text-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">1</span>
+                        </li>
+                        
+                        <!--
+                        <li class="page-item">
+                            <a class="page-link" href="">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        -->
+        
+                        <li class="page-item">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kategória szűrés</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="categorySelect" class="form-label">Válasszon kategóriát:</label>
+                            <select class="form-select" id="categorySelect">
+                                <option value="all">Mind</option>
+                                <option value="inverter">Inverteres</option>
+                                <option value="portable">Hordozható</option>
+                                <option value="smart">Okos funkciókkal</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary">Szűrés</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5">
+        <p class="text-center">&copy; 2024 MDTech. Minden jog fenntartva.</p>
+    </footer>
+
+    <script src="../login.js"></script>
+    <script src="../logout.js"></script>
+    <script src="../loginstatus.js"></script>
+    <script src="../search.js"></script>
+    <script src="../basket.js"></script>
+
+    <script src="https://kit.fontawesome.com/bef541dbfa.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+</body>
+
+</html>
